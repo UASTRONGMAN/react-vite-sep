@@ -1,9 +1,10 @@
-import React from 'react';
+
+import FamilyComponent from "./components/FamilyComponent.tsx";
 
 const App = () => {
     return (
         <div>
-            
+            <FamilyComponent/>
         </div>
     );
 };
