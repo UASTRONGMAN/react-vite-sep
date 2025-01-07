@@ -1,7 +1,7 @@
 export interface ISimpsonModel {
-    name: str
-    surname: str
-    age: num
-    info:  str
-    photo: str
+    name: string
+    surname: string
+    age: number
+    info:  string
+    photo: string
 }
