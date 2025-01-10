@@ -6,7 +6,7 @@ import Todo from "./Todo.tsx";
 const Todos = () => {
     const [todos, setTodos] = useState<ITodo[]>([])
     useEffect(() => {
-        getTodos().then(({todos}:ITodo) => setTodos(todos))
+        getTodos().then(({todos}:ITodo[]) => setTodos(todos))
     }, []);
     return (
         <div>
