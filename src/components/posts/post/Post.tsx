@@ -5,6 +5,7 @@ interface IProps{
     post:IPost
 }
 const Post:FC<IProps> = ({post}) => {
+
     return (
         <div>
             {post.id}. {post.title}. User id - {post.userId}.

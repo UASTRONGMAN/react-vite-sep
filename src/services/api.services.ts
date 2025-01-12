@@ -1,6 +1,7 @@
 import {urls} from "../constants/urls.ts";
 import {IUser} from "../models/IUser.ts";
 import {IPost} from "../models/IPost.ts";
+import {ICart} from "../models/ICart.ts";
 
 const apiServices = {
     users:{
@@ -20,6 +21,12 @@ const apiServices = {
         },
         getPost: async (id:number):Promise<IPost> => {
             return await fetch(urls.posts.getPost(id))
+                .then(res => res.json())
+        }
+    },
+    carts:{
+        byUser: async (id:number):Promise<ICart[]> => {
+            return await fetch(urls.carts.byUser(id))
                 .then(res => res.json())
         }
     }

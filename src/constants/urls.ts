@@ -8,6 +8,9 @@ const urls = {
     posts:{
         getAllPosts: baseURL + '/posts',
         getPost: (id:number) => urls.posts.getAllPosts + '/' + id
+    },
+    carts: {
+        byUser: (id:number) => baseURL + '/carts/user/' + id
     }
 }
 

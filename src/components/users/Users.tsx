@@ -1,12 +1,15 @@
-import {FC} from "react";
+import {useEffect, useState} from "react";
 import {IUser} from "../../models/IUser.ts";
 import User from "./user/User.tsx";
+import {apiServices} from "../../services/api.services.ts";
 
-interface IProps{
-    users:IUser[]
-}
 
-const Users:FC<IProps> = ({users}) => {
+const Users= () => {
+    const [users, setUsers] = useState<IUser[]>([])
+    useEffect(() => {
+        apiServices.users.getAllUsers()
+            .then(({users}:IUser[]) => setUsers(users))
+    }, []);
     return (
         <div>
             {users.map(user => <User key={user.id} user={user}/>)}

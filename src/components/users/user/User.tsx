@@ -1,5 +1,6 @@
 import {FC} from "react";
 import {IUser} from "../../../models/IUser.ts";
+import {Link} from "react-router-dom";
 
 interface IProps{
     user:IUser
@@ -7,7 +8,7 @@ interface IProps{
 const User:FC<IProps> = ({user}) => {
     return (
         <div>
-            {user.id}. {user.firstName} {user.lastName}
+            <Link to={`${user.id}/carts`}>{user.id}. {user.firstName} {user.lastName}</Link>
         </div>
     );
 };
