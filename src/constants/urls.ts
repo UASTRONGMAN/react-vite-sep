@@ -2,12 +2,8 @@ const baseURL = 'https://dummyjson.com'
 
 const urls = {
     users:{
-        getAllUsers: baseURL + '/users',
+        getAllUsers: (skip: string) => baseURL + '/users?skip=' + skip,
         getUser: (id:number) => urls.users.getAllUsers + '/' + id
-    },
-    posts:{
-        getAllPosts: baseURL + '/posts',
-        getPost: (id:number) => urls.posts.getAllPosts + '/' + id
     }
 }
 
