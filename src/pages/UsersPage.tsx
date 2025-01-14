@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {IUser} from "../models/IUser.ts";
 import {apiServices} from "../services/api.services.ts";
 import Users from "../components/users/Users.tsx";
 import Pagination from "../components/pagination/Pagination.tsx";
