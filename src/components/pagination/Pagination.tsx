@@ -10,7 +10,6 @@ const Pagination:FC<IProps> = ({props}) => {
     const [query, setQuery] = useSearchParams({skip:'0'});
     const skip = query.get('skip');
     const dis = Number(skip)+30
-    console.log(props.total)
     const pageUp = () => {
 
         if (skip) {
