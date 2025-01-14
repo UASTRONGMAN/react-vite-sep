@@ -1,9 +1,16 @@
 import {useSearchParams} from "react-router-dom";
+import {FC} from "react";
+import {IResponse} from "../../models/IResponse.ts";
 
+interface IProps{
+    props:IResponse
+}
 
-const Pagination = () => {
+const Pagination:FC<IProps> = ({props}) => {
     const [query, setQuery] = useSearchParams({skip:'0'});
     const skip = query.get('skip');
+    const dis = Number(skip)+30
+    console.log(props.total)
     const pageUp = () => {
 
         if (skip) {
@@ -24,7 +31,7 @@ const Pagination = () => {
     return (
         <div>
             <button onClick={pageDown} disabled={skip==0}>prev</button>
-            <button onClick={pageUp}>next</button>
+            <button onClick={pageUp} disabled={dis>props.total}>next</button>
         </div>
     );
 };
