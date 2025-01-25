@@ -5,6 +5,7 @@ import {ILoginDataModel} from "../models/ILoginDataModel.ts";
 import {IProductsResponseModel} from "../models/IProductsResponseModel.ts";
 import {IProduct} from "../models/IProduct.ts";
 import {retriveLocalStorage} from "../helpers/api.helpers.ts";
+import {ITokenPair} from "../models/ITokenPair.ts";
 
 
 const axiosInstance = axios.create({
@@ -33,4 +34,13 @@ export const getProducts = async ():Promise<IProduct[]> => {
     const {data} = await axiosInstance.get<IProductsResponseModel>(urls.products);
     return data.products
 }
+
+export const refresh = async () => {
+    const userWithTokens = retriveLocalStorage<ILoginResponseModel>('user');
+    const {data:{accessToken, refreshToken}} = await axiosInstance.post<ITokenPair>(urls.refresh, {refreshToken: userWithTokens.refreshToken, expiresInMins:1});
+    userWithTokens.accessToken = accessToken
+    userWithTokens.refreshToken = refreshToken
+    localStorage.setItem('user', JSON.stringify(userWithTokens))
+}
+
 
