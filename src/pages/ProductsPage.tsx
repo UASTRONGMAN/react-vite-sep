@@ -11,7 +11,7 @@ const ProductsPage = () => {
             .then(value => setProducts(value))
             .catch(result => {
                 console.log(result)
-                refresh().then(() => getProducts()).then(value => setProducts(value))
+                refresh().then(() => getProducts().then(value => setProducts(value)))
             })
     }, [])
     return (
